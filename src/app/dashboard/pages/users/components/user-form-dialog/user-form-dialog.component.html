@@ -1,0 +1,39 @@
+<form [formGroup]="userForm" class="grid">
+  <div class="field">
+    <mat-form-field class="w-full">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput type ="name" name="nameControl">
+      <mat-error *ngIf="nameControl.hasError('required')">
+        Este campo es requerido
+      </mat-error>
+      <mat-error *ngIf="nameControl.hasError('minlength')">
+        El campo debe tener al menos {{nameControl.errors?.['minlength']?.value}} caracteres
+      </mat-error>
+      <mat-error *ngIf="nameControl.hasError('noHomero')">
+        No se admiten Homeros
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="field ">
+    <mat-form-field class="w-full">
+      <mat-label>Surname</mat-label>
+      <input formControlName="surname" matInput type ="surname" name="surnameControl">
+    </mat-form-field>
+  </div>
+  <div class="field">
+    <mat-form-field class="w-full">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput type ="email" name="emailControl">
+    </mat-form-field>
+  </div>
+  <div class="field">
+    <mat-form-field class="w-full">
+      <mat-label>Contraseña</mat-label>
+      <input formControlName="password" matInput type ="password" name="passwordControl">
+    </mat-form-field>
+  </div>
+  <div>
+    <button (click)="onSubmit()" type="submit" mat-button> Guardar</button>
+  </div>
+  <pre>{{userForm.value| json}}</pre>
+</form>
