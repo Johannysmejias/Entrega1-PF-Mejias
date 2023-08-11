@@ -1,8 +1,11 @@
+<h1 mat-dialog-title>Agregar usuario</h1>
+
+<mat-dialog-content class="field">
 <form [formGroup]="userForm" class="grid">
-  <div class="field">
-    <mat-form-field class="w-full">
-      <mat-label>Name</mat-label>
-      <input formControlName="name" matInput type ="name" name="nameControl">
+  <div class="field col-3">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input formControlName="Nombre" matInput type ="name" name="nameControl">
       <mat-error *ngIf="nameControl.hasError('required')">
         Este campo es requerido
       </mat-error>
@@ -14,26 +17,47 @@
       </mat-error>
     </mat-form-field>
   </div>
-  <div class="field ">
-    <mat-form-field class="w-full">
-      <mat-label>Surname</mat-label>
-      <input formControlName="surname" matInput type ="surname" name="surnameControl">
+  <div class="field col-3">
+    <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input formControlName="Apellido" matInput type ="surname" name="surnameControl">
     </mat-form-field>
   </div>
-  <div class="field">
-    <mat-form-field class="w-full">
+  <div class="field col-3">
+    <mat-form-field  >
       <mat-label>Email</mat-label>
       <input formControlName="email" matInput type ="email" name="emailControl">
     </mat-form-field>
   </div>
-  <div class="field">
-    <mat-form-field class="w-full">
-      <mat-label>Contraseña</mat-label>
-      <input formControlName="password" matInput type ="password" name="passwordControl">
+  <div class="field col-3">
+    <mat-form-field >
+      <mat-label>Edad</mat-label>
+      <input formControlName="edad" matInput  name="passwordControl">
     </mat-form-field>
   </div>
-  <div>
-    <button (click)="onSubmit()" type="submit" mat-button> Guardar</button>
+  <div class="field col-3">
+  <mat-form-field>
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input formControlName="cumpleanios" matInput type="date" name="passwordControl">
+    </mat-form-field>
   </div>
-  <pre>{{userForm.value| json}}</pre>
+  <div class="field col-3">
+    <mat-form-field >
+      <mat-label>Seleccione una opcion</mat-label>
+      <mat-select>
+        <mat-option value="Angular">Angular</mat-option>
+        <mat-option value="JavaScript">JavaScript</mat-option>
+        <mat-option value="Desarrollo web">Desarrollo web</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+<mat-dialog-actions class="flex justify-content-end m-3">
+  <div>
+    <button  (click)="onSubmit()" type="submit" mat-button> Guardar</button>
+  </div>
+  <div>
+    <button mat-button mat-dialog-close>Cancelar</button>
+  </div>
+</mat-dialog-actions>
 </form>
+</mat-dialog-content>

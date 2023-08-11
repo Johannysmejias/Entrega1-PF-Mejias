@@ -1,4 +1,67 @@
-<button (click)="onCreateUser()" mat-flat-button type="button">
+<h1 appFontSize>Alumnos</h1>
+<div class="mb-3"><button (click)="onCreateUser()" mat-flat-button type="button">
   <mat-icon>add</mat-icon>
   Crear usuario
-</button>
+</button></div>
+<mat-form-field class="w-100">
+  <mat-label>Filtro</mat-label>
+  <input
+    matInput
+    (keyup)="aplicarFiltro($event)"
+    placeholder="Ejemplo: Sheldon"
+    #input
+  />
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+
+  <ng-container matColumnDef="id"  >
+    <th mat-header-cell *matHeaderCellDef> id </th>
+    <td mat-cell *matCellDef="let dataSource"> {{dataSource.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre completo">
+    <th mat-header-cell *matHeaderCellDef> Nombre Completo </th>
+    <td mat-cell *matCellDef="let dataSource"> {{dataSource|nombreCompleto}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email</th>
+    <td mat-cell *matCellDef="let dataSource"> {{dataSource.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="edad">
+    <th mat-header-cell *matHeaderCellDef> Edad </th>
+    <td mat-cell *matCellDef="let dataSource"> {{dataSource.edad}} </td>
+  </ng-container>
+  <ng-container matColumnDef="fecha de nacimiento">
+    <th mat-header-cell *matHeaderCellDef> Fecha de nacimiento </th>
+    <td mat-cell *matCellDef="let dataSource"> {{dataSource.cumpleanios | date: 'longDate' }} </td>
+  </ng-container>
+  <ng-container matColumnDef="curso">
+    <th mat-header-cell *matHeaderCellDef> Curso </th>
+    <td mat-cell *matCellDef="let dataSource" [ngClass]="{
+      'angular' : dataSource.curso == 'Angular',
+      'javascript' : dataSource.curso == 'JavaScript',
+      'desarrollo' : dataSource.curso == 'Desarrollo web'
+    }"> {{dataSource.curso}} </td>
+  </ng-container>
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef >Acciones</th>
+    <td mat-cell *matCellDef="let dataSource; let i= index">
+      <button mat-icon-button matTooltip="Editar" (click)="editarAlumno(dataSource)" color="primary">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Eliminar" (click)="eliminarAlumno(i)" color="warn">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
+

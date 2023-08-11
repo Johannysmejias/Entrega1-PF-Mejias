@@ -8,11 +8,13 @@ import {MatIconModule} from '@angular/material/icon';
 import { HomeModule } from './pages/home/home.module';
 import { UsersModule } from './pages/users/users.module';
 import { SharedModule } from '../shared/shared.module';
+import { ConfirmDialogComponent } from './pages/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
